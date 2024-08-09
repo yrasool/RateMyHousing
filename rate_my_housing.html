@@ -1,0 +1,156 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RateMyHousing</title>
+    <link rel="stylesheet" href="website.css">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 10px 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .signup-link, .login-link {
+            font-size: 0.9em;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #333;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .signup-link:hover, .login-link:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .hero-text-box {
+            background-color: #fff;
+            padding: 20px 40px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-text {
+            color: #333;
+            font-size: 3em;
+            font-style: italic;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .search-container input {
+            padding: 15px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            width: 250px;
+            text-align: center;
+        }
+
+        .search-container button {
+            padding: 15px 20px;
+            font-size: 1em;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-container button:hover {
+            background-color: #555;
+        }
+
+        .listings-link {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #333;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            transition: background-color 0.3s ease;
+        }
+
+        .listings-link:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="login.html" class="login-link">Login</a>
+        <a href="signup.html" class="signup-link">Signup</a>
+    </header>
+
+    <div class="hero-text-box">
+        <div class="hero-text">RateMyHousing</div>
+    </div>
+
+    <div class="hero-image">
+        <img src="C:/Users/yusra/OneDrive - University of South Florida/HTM-CSS/What-Every-College-Student-Should-Know-Before-Moving-into-Their-First-Apartment-e1564758781616.jpg" alt="Moving Boxes">
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="search" name="search" placeholder="Search apartments...">
+        <input type="text" id="location" name="location" placeholder="Location...">
+        <button type="submit">Search</button>
+    </div>
+
+    <!-- Link to view all listings -->
+    <a href="listings.html" class="listings-link">View All Listings</a>
+
+    <footer>
+        &copy; 2024 RateMyHousing - Helping students find the best off-campus housing
+    </footer>
+</body>
+</html>
