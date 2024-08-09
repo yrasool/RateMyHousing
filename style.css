@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 24px;
+}
+
+main {
+    padding: 20px;
+}
+
+.listing {
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.listing .title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.listing .price, .listing .location, .listing .reviews {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.reviews {
+    display: flex;
+    align-items: center;
+}
+
+.star {
+    color: gold;
+    font-size: 20px;
+    margin-right: 5px;
+}

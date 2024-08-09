@@ -1,0 +1,146 @@
+body {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-link {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: salmon;
+    font-size: 1em;
+}
+
+.login-link {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: salmon;
+    font-size: 1em;
+}
+
+.search-container {
+    position: absolute;
+    top: -60%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    z-index: 10;
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-container input[type="text"] {
+    padding: 20px; /* Increased padding for larger input */
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 2em; }
+
+.search-container button {
+    padding: 20px 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 2em; /* Increased font size */
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #45a049;
+}
+
+.listings-link-container {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.listings-link {
+    font-size: 1.4em; /* Increased font size */
+    color: #fff;
+    background-color: #333;
+    text-decoration: none;
+    padding: 20px 40px; /* Increased padding */
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.listings-link:hover {
+    background-color: #555;
+}
+
+.hero-image {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    margin-top: 20px; /* Provide some space between the button and image */
+    opacity: 0.8; /* Apply fade effect */
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(70%); /* Further reduce brightness */
+}
+
+.hero-text-box {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white; /* Make sure text color is white */
+    font-style: italic;
+    font-size: 1em;
+    font-weight: bold;
+    display: inline-block;
+    white-space: nowrap;
+    z-index: 10; /* Ensure the text is on top of the image */
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    width: 100%;
+}
