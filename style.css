@@ -16,6 +16,12 @@ header {
 main {
     padding: 20px;
 }
+.hero-image img {
+    width: 100%;   /* Ensure the image takes up the full width */
+    height: auto;  /* Maintain aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 .listing {
     background-color: white;
