@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - RateMyHousing</title>
+    <link rel="stylesheet" href="website.css">
+    <style>
+        .review-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .review-form {
+            margin-top: 20px;
+        }
+
+        .rating-input {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            margin: 10px 0;
+        }
+
+        .rating-input input {
+            display: none;
+        }
+
+        .rating-input label {
+            color: #ddd;
+            font-size: 24px;
+            padding: 0 5px;
+            cursor: pointer;
+        }
+
+        .rating-input label:hover,
+        .rating-input label:hover ~ label,
+        .rating-input input:checked ~ label {
+            color: gold;
+        }
+
+        .review-text {
+            width: 100%;
+            min-height: 100px;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .submit-review {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .submit-review:hover {
+            background-color: #45a049;
+        }
+
+        .reviews-list {
+            margin-top: 30px;
+        }
+
+        .review-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .review-rating {
+            color: gold;
+        }
+
+        .review-date {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .login-prompt {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .login-prompt a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">RateMyHousing</a>
+        <nav>
+            <a href="listings.html">Listings</a>
+            <a href="login.html" id="loginBtn">Login</a>
+            <a href="signup.html" id="signupBtn">Signup</a>
+            <button id="logoutBtn" style="display: none;">Logout</button>
+        </nav>
+    </header>
+
+    <div class="review-container">
+        <h2>Reviews for <span id="propertyName"></span></h2>
+        
+        <!-- Reviews list - visible to everyone -->
+        <div class="reviews-list">
+            <h3>All Reviews</h3>
+            <div id="reviewsList">
+                <!-- Reviews will be dynamically loaded here -->
+            </div>
+        </div>
+
+        <!-- Login prompt for non-authenticated users who want to review -->
+        <div id="loginPrompt" class="login-prompt">
+            Want to leave a review? Please <a href="login.html">login</a> or <a href="signup.html">signup</a>.
+        </div>
+
+        <!-- Review form for authenticated users -->
+        <form id="reviewForm" class="review-form" style="display: none;">
+            <h3>Write a Review</h3>
+            <div class="rating-input">
+                <input type="radio" id="star5" name="rating" value="5">
+                <label for="star5">★</label>
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4">★</label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3">★</label>
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2">★</label>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1">★</label>
+            </div>
+            <textarea class="review-text" placeholder="Write your review here..." required></textarea>
+            <button type="submit" class="submit-review">Submit Review</button>
+        </form>
+    </div>
+
+    <script>
+        // Check authentication status
+        function checkAuth() {
+            const isAuthenticated = localStorage.getItem('isAuthenticated');
+            const loginBtn = document.getElementById('loginBtn');
+            const signupBtn = document.getElementById('signupBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const reviewForm = document.getElementById('reviewForm');
+            const loginPrompt = document.getElementById('loginPrompt');
+
+            if (isAuthenticated === 'true') {
+                loginBtn.style.display = 'none';
+                signupBtn.style.display = 'none';
+                logoutBtn.style.display = 'inline-block';
+                reviewForm.style.display = 'block';
+                loginPrompt.style.display = 'none';
+            } else {
+                loginBtn.style.display = 'inline-block';
+                signupBtn.style.display = 'inline-block';
+                logoutBtn.style.display = 'none';
+                reviewForm.style.display = 'none';
+                loginPrompt.style.display = 'block';
+            }
+        }
+
+        // Load reviews for the property
+        function loadReviews() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const propertyId = urlParams.get('id');
+            const propertyName = urlParams.get('name');
+            
+            document.getElementById('propertyName').textContent = propertyName || 'Property';
+            
+            // Get reviews from localStorage
+            const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            const propertyReviews = reviews.filter(review => review.propertyId === propertyId);
+            
+            const reviewsList = document.getElementById('reviewsList');
+            reviewsList.innerHTML = '';
+            
+            if (propertyReviews.length === 0) {
+                reviewsList.innerHTML = '<p>No reviews yet. Be the first to review!</p>';
+                return;
+            }
+            
+            propertyReviews.forEach(review => {
+                const reviewElement = document.createElement('div');
+                reviewElement.className = 'review-item';
+                reviewElement.innerHTML = `
+                    <div class="review-header">
+                        <div class="review-rating">${'★'.repeat(review.rating)}${'☆'.repeat(5-review.rating)}</div>
+                        <div class="review-date">${new Date(review.date).toLocaleDateString()}</div>
+                    </div>
+                    <div class="review-content">${review.review}</div>
+                `;
+                reviewsList.appendChild(reviewElement);
+            });
+        }
+
+        // Handle review submission
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const rating = document.querySelector('input[name="rating"]:checked').value;
+            const review = document.querySelector('.review-text').value;
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const propertyId = urlParams.get('id');
+            const propertyName = urlParams.get('name');
+
+            const reviewData = {
+                propertyId: propertyId,
+                propertyName: propertyName,
+                rating: rating,
+                review: review,
+                userId: localStorage.getItem('userId'),
+                date: new Date().toISOString()
+            };
+
+            let reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            reviews.push(reviewData);
+            localStorage.setItem('reviews', JSON.stringify(reviews));
+
+            // Clear form and reload reviews
+            this.reset();
+            loadReviews();
+        });
+
+        // Initialize page
+        checkAuth();
+        loadReviews();
+
+        // Handle logout
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('isAuthenticated');
+            localStorage.removeItem('userId');
+            window.location.reload();
+        });
+    </script>
+</body>
+</html>

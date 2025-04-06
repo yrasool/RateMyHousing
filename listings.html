@@ -1,291 +1,378 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listings</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Listings - RateMyHousing</title>
+    <link rel="stylesheet" href="website.css">
+    <style>
+        .listings-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        
+        .listing-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        
+        .listing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .listing-title {
+            font-size: 1.5em;
+            color: #333;
+            margin: 0;
+        }
+        
+        .listing-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .star {
+            color: #ffd700;
+        }
+        
+        .listing-details {
+            margin-bottom: 15px;
+        }
+        
+        .listing-price {
+            font-size: 1.2em;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .listing-location {
+            color: #666;
+            margin: 5px 0;
+        }
+        
+        .listing-description {
+            color: #444;
+            line-height: 1.5;
+        }
+        
+        .reviews-section {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .review {
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .review-author {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .review-date {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .review-text {
+            color: #444;
+            line-height: 1.4;
+        }
+        
+        .add-review-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .add-review-btn:hover {
+            background-color: #45a049;
+        }
+        
+        .review-form {
+            display: none;
+            margin-top: 15px;
+        }
+        
+        .review-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            resize: vertical;
+        }
+        
+        .review-form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .review-form button:hover {
+            background-color: #45a049;
+        }
+        
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <header>
-        Listings
+        <a href="index.html" class="logo">RateMyHousing</a>
+        <nav>
+            <a href="listings.html">Listings</a>
+            <a href="login.html" id="loginBtn">Login</a>
+            <a href="signup.html" id="signupBtn">Signup</a>
+            <button id="logoutBtn" style="display: none;">Logout</button>
+        </nav>
     </header>
-    <main>
-        
-        <div class="listing">
-            <div class="title">The Vintage Lofts at West End</div>
-            <div class="price">Price: 1 Day Ago</div>
-            <div class="location">Location: 801 N Rome Ave, Tampa, FL 33606</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Sarasota Condo</div>
-            <div class="price">Price: 2 Wks Ago</div>
-            <div class="location">Location: 4631 Longwater Chase, Sarasota, FL 34235</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">The Cottages at Cypress Cay</div>
-            <div class="price">Price: 2 Wks Ago</div>
-            <div class="location">Location: 15081 Cypress Cay Blvd, Lutz, FL 33559</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Escape Tampa Bay Tiny House</div>
-            <div class="price">Price: 4 Days Ago</div>
-            <div class="location">Location: 11014 US-301, Thonotosassa, FL 33592</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Captiva Club Apartments</div>
-            <div class="price">Price: 1 Day Ago</div>
-            <div class="location">Location: 4401 Club Captiva Dr, Tampa, FL 33615</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Charming early 1900's 2/1 Bungalow</div>
-            <div class="price">Price: 2 Wks Ago</div>
-            <div class="location">Location: 813 East Frierson Avenue, Tampa, FL 33603</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Mezzo of Tampa Palms</div>
-            <div class="price">Price: 1 Day Ago</div>
-            <div class="location">Location: 15210 Amberly Dr, Tampa, FL 33647</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">**Newly Renovated Master Suite **</div>
-            <div class="price">Price: 2 Wks Ago</div>
-            <div class="location">Location: 15406 Manning Drive, Tampa, FL 33613</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">College Town at USF</div>
-            <div class="price">Price: 4 Days Ago</div>
-            <div class="location">Location: 2301 Aberdeen Court, Tampa, FL 33612</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">4214 W Union St</div>
-            <div class="price">Price: 5 Days Ago</div>
-            <div class="location">Location: 4214 W Union St, Tampa, FL 33607</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Fernwood Grove Apartments</div>
-            <div class="price">Price: 1 Day Ago</div>
-            <div class="location">Location: 4900 N Macdill Ave, Tampa, FL 33614</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Condo w/ Private yard and water view</div>
-            <div class="price">Price: 2 Wks Ago</div>
-            <div class="location">Location: 13812 Orange Sunset Drive, Tampa, FL 33618</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">The Retreat at Tampa Cottages</div>
-            <div class="price">Price: 1 Day Ago</div>
-            <div class="location">Location: 11326 N 46th St, Tampa, FL 33617</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">4x4 unit across the street from USF</div>
-            <div class="price">Price: 1 Day Ago</div>
-            <div class="location">Location: 5035 Sunridge Palms Drive #101, Tampa, FL 33617</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">The Province Apartments</div>
-            <div class="price">Price: 2 Wks Ago</div>
-            <div class="location">Location: 10921 McKinley Drive, Tampa, FL 33612</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Furnished 1 Bedroom in Gated Community</div>
-            <div class="price">Price: 2 Wks Ago</div>
-            <div class="location">Location: 2866 Somerset Park Drive #102, Tampa, FL 33613</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">The Flats at Seminole Heights</div>
-            <div class="price">Price: 1 Day Ago</div>
-            <div class="location">Location: 4111 N Poplar Ave, Tampa, FL 33603</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">1611 E 18th Ave</div>
-            <div class="price">Price: 4 Days Ago</div>
-            <div class="location">Location: 1611 E 18th Ave, Tampa, FL 33605</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">The Livingston</div>
-            <div class="price">Price: 1 Day Ago</div>
-            <div class="location">Location: 15420 Livingston Ave, Lutz, FL 33559</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">4050 Lofts, walk to USF Campus, on Bull Runner Line</div>
-            <div class="price">Price: 4 Days Ago</div>
-            <div class="location">Location: 4050 Rocky Circle, Tampa, FL 33613</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Halo 46: Off-Campus Student Housing</div>
-            <div class="price">Price: 1 Day Ago</div>
-            <div class="location">Location: 14500 N 46th St, Tampa, FL 33613</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Furnished All Inclusive Private Single Bedrooms & Whole Homes for Students --RCAD, USF, New College</div>
-            <div class="price">Price: 2 Wks Ago</div>
-            <div class="location">Location: 1067 41st Street, Sarasota, FL 34234</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">AZORA AT CYPRESS RANCH</div>
-            <div class="price">Price: 1 Day Ago</div>
-            <div class="location">Location: 17583 Bellavista Loop, Lutz, FL 33558</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Furnished Rentals for Students & Young Professionals</div>
-            <div class="price">Price: 2 Wks Ago</div>
-            <div class="location">Location: 3011 6th Street, Sarasota, FL 34237</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Reflections</div>
-            <div class="price">Price: 1 Day Ago</div>
-            <div class="location">Location: 14525 Prism Cir, Tampa, FL 33613</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Three Bedroom Home w/ Three Private Baths! Near Downtown St. Petersburg</div>
-            <div class="price">Price: 2 Wks Ago</div>
-            <div class="location">Location: 4725 15th Avenue South, St. Petersburg, FL 33711</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Armature Gate Townhomes</div>
-            <div class="price">Price: 1 Day Ago</div>
-            <div class="location">Location: 13835 Heritage Club Dr, Tampa, FL 33613</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Sunridge Palms on 50th Street</div>
-            <div class="price">Price: 2 Wks Ago</div>
-            <div class="location">Location: 5166 Sunridge Palms Drive, Tampa, FL 33617</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Apella on Newport</div>
-            <div class="price">Price: 1 Day Ago</div>
-            <div class="location">Location: 311 N Newport Ave, Tampa, FL 33606</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Summer Sublease Available (Girls Only) // May Rent Paid</div>
-            <div class="price">Price: 2 Wks Ago</div>
-            <div class="location">Location: 3600 E Fletcher Avenue, Tampa, FL 33613</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Bayside Arbors of Clearwater</div>
-            <div class="price">Price: Updated Today</div>
-            <div class="location">Location: 2729 Seville Blvd, Clearwater, FL 33764</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Vue Tampa South</div>
-            <div class="price">Price: 2 Wks Ago</div>
-            <div class="location">Location: 5610 Graduate Circle, Tampa, FL 33617</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Park Place at Tampa</div>
-            <div class="price">Price: 1 Day Ago</div>
-            <div class="location">Location: 3400 Park Sq E, Tampa, FL 33613</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Avalon Heights</div>
-            <div class="price">Price: 2 Wks Ago</div>
-            <div class="location">Location: 13508 Avalon Heights Blvd, Tampa, FL 33613</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Urban Place Apartments</div>
-            <div class="price">Price: 1 Day Ago</div>
-            <div class="location">Location: 13401 N 50th St, Tampa, FL 33617</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Avalon Heights Apartments</div>
-            <div class="price">Price: 1 Wk Ago</div>
-            <div class="location">Location: 13508 Avalon Heights Boulevard, Tampa, FL 33613</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">*Summer Term* Forest Lake Apartments!!</div>
-            <div class="price">Price: 2 Wks Ago</div>
-            <div class="location">Location: 15004 Turtle Lake Court, Lutz, FL 33559</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">Anchor Riverwalk</div>
-            <div class="price">Price: 1 Day Ago</div>
-            <div class="location">Location: 109 W Fortune St, Tampa, FL 33602</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-        <div class="listing">
-            <div class="title">College Town</div>
-            <div class="price">Price: 2 Wks Ago</div>
-            <div class="location">Location: 2301 Aberdeen Court, Tampa, FL 33612</div>
-            <div class="reviews">Reviews: <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span></div>
-        </div>
-        
-    </main>
+
+    <div class="listings-container" id="listingsContainer">
+        <!-- Listings will be dynamically inserted here -->
+    </div>
+
+    <script>
+        let isAuthenticated = false;
+        let currentUser = null;
+
+        // Check authentication status
+        fetch('/api/check-auth', {
+            method: 'GET',
+            credentials: 'include'
+        })
+        .then(response => response.json())
+        .then(data => {
+            isAuthenticated = data.authenticated;
+            currentUser = data.user;
+            updateAuthUI();
+        })
+        .catch(error => {
+            console.error('Error checking authentication:', error);
+        });
+
+        // Update UI based on authentication status
+        function updateAuthUI() {
+            const loginBtn = document.getElementById('loginBtn');
+            const signupBtn = document.getElementById('signupBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+
+            if (isAuthenticated) {
+                loginBtn.style.display = 'none';
+                signupBtn.style.display = 'none';
+                logoutBtn.style.display = 'inline-block';
+            } else {
+                loginBtn.style.display = 'inline-block';
+                signupBtn.style.display = 'inline-block';
+                logoutBtn.style.display = 'none';
+            }
+        }
+
+        // Handle logout
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            fetch('/api/logout', {
+                method: 'POST',
+                credentials: 'include'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    isAuthenticated = false;
+                    currentUser = null;
+                    updateAuthUI();
+                    window.location.reload();
+                }
+            })
+            .catch(error => {
+                console.error('Error during logout:', error);
+            });
+        });
+
+        // Fetch and display listings
+        function fetchListings() {
+            fetch('/api/properties', {
+                method: 'GET',
+                credentials: 'include'
+            })
+            .then(response => response.json())
+            .then(properties => {
+                const container = document.getElementById('listingsContainer');
+                container.innerHTML = '';
+
+                properties.forEach(property => {
+                    const listingCard = createListingCard(property);
+                    container.appendChild(listingCard);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching listings:', error);
+            });
+        }
+
+        // Create a listing card element
+        function createListingCard(property) {
+            const card = document.createElement('div');
+            card.className = 'listing-card';
+            
+            const rating = property.rating ? property.rating.toFixed(1) : 'No ratings';
+            const stars = property.rating ? '★'.repeat(Math.round(property.rating)) : '';
+            
+            card.innerHTML = `
+                <div class="listing-header">
+                    <h2 class="listing-title">${property.title}</h2>
+                    <div class="listing-rating">
+                        <span class="star">${stars}</span>
+                        <span>${rating}</span>
+                    </div>
+                </div>
+                <div class="listing-details">
+                    <div class="listing-price">$${property.price}</div>
+                    <div class="listing-location">${property.location}</div>
+                    <p class="listing-description">${property.description}</p>
+                </div>
+                <div class="reviews-section">
+                    <h3>Reviews</h3>
+                    <div class="reviews-container" id="reviews-${property.id}">
+                        <!-- Reviews will be loaded here -->
+                    </div>
+                    ${isAuthenticated ? `
+                        <button class="add-review-btn" onclick="showReviewForm(${property.id})">Add Review</button>
+                        <div class="review-form" id="review-form-${property.id}">
+                            <textarea placeholder="Write your review..." required></textarea>
+                            <div class="rating-input">
+                                <label>Rating:</label>
+                                <select>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <button onclick="submitReview(${property.id})">Submit Review</button>
+                            <div class="error-message"></div>
+                        </div>
+                    ` : '<p>Please <a href="login.html">login</a> to leave a review.</p>'}
+                </div>
+            `;
+            
+            // Load reviews for this property
+            fetchReviews(property.id);
+            
+            return card;
+        }
+
+        // Fetch reviews for a property
+        function fetchReviews(propertyId) {
+            fetch(`/api/properties/${propertyId}/reviews`, {
+                method: 'GET',
+                credentials: 'include'
+            })
+            .then(response => response.json())
+            .then(reviews => {
+                const container = document.getElementById(`reviews-${propertyId}`);
+                if (reviews.length === 0) {
+                    container.innerHTML = '<p>No reviews yet.</p>';
+                    return;
+                }
+
+                container.innerHTML = reviews.map(review => `
+                    <div class="review">
+                        <div class="review-header">
+                            <span class="review-author">${review.username}</span>
+                            <span class="review-date">${new Date(review.created_at).toLocaleDateString()}</span>
+                        </div>
+                        <div class="review-rating">
+                            ${'★'.repeat(review.rating)}
+                        </div>
+                        <p class="review-text">${review.text}</p>
+                    </div>
+                `).join('');
+            })
+            .catch(error => {
+                console.error('Error fetching reviews:', error);
+            });
+        }
+
+        // Show review form
+        function showReviewForm(propertyId) {
+            const form = document.getElementById(`review-form-${propertyId}`);
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Submit review
+        function submitReview(propertyId) {
+            const form = document.getElementById(`review-form-${propertyId}`);
+            const textarea = form.querySelector('textarea');
+            const ratingSelect = form.querySelector('select');
+            const errorMessage = form.querySelector('.error-message');
+            
+            const text = textarea.value.trim();
+            const rating = parseInt(ratingSelect.value);
+            
+            if (!text) {
+                errorMessage.textContent = 'Please write a review.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            fetch(`/api/properties/${propertyId}/reviews`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({ text, rating })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    textarea.value = '';
+                    form.style.display = 'none';
+                    fetchReviews(propertyId);
+                    fetchListings(); // Refresh listings to update average rating
+                } else {
+                    errorMessage.textContent = data.error || 'Failed to submit review.';
+                    errorMessage.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error submitting review:', error);
+                errorMessage.textContent = 'An error occurred. Please try again later.';
+                errorMessage.style.display = 'block';
+            });
+        }
+
+        // Initial load
+        fetchListings();
+    </script>
 </body>
 </html>
